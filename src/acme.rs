@@ -2,7 +2,7 @@ use crate::any_ecdsa_type;
 use crate::crypto::error::{KeyRejected, Unspecified};
 use crate::crypto::rand::SystemRandom;
 use crate::crypto::signature::{EcdsaKeyPair, EcdsaSigningAlgorithm, ECDSA_P256_SHA256_FIXED_SIGNING};
-use crate::https_helper::{https, HttpsRequestError};
+use crate::https_helper::https;
 use crate::jose::{key_authorization, key_authorization_sha256, sign, JoseError};
 use base64::prelude::*;
 use futures_rustls::pki_types::{PrivateKeyDer, PrivatePkcs8KeyDer};
@@ -14,6 +14,8 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::sync::Arc;
 use thiserror::Error;
+
+pub use crate::https_helper::HttpsRequestError;
 
 pub const LETS_ENCRYPT_STAGING_DIRECTORY: &str = "https://acme-staging-v02.api.letsencrypt.org/directory";
 pub const LETS_ENCRYPT_PRODUCTION_DIRECTORY: &str = "https://acme-v02.api.letsencrypt.org/directory";
